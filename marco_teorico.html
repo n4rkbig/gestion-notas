@@ -32,66 +32,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
       media="screen"
     />
-    <style>
-      /* Estilos para el índice lateral */
-      .indice-lateral {
-        position: sticky;
-        top: 100px;
-        height: calc(100vh - 120px);
-        overflow-y: auto;
-        padding-right: 15px;
-      }
-      
-      .indice-item {
-        padding: 10px 15px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        color: #333;
-        background-color: #f8f9fa;
-      }
-      
-      .indice-item:hover, .indice-item.active {
-        background-color: #287032;
-        color: white;
-        transform: translateX(5px);
-      }
-      
-      .indice-item.active {
-        font-weight: bold;
-        border-left: 4px solid #287032;
-      }
-      
-      /* Mejoras para el acordeón */
-      .accordion-content {
-        transition: all 0.4s ease;
-        overflow: hidden;
-      }
-      
-      .accordion-header {
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-      
-      .accordion-header:hover {
-        background-color: #f1f1f1;
-      }
-      
-      .accordion-header.active {
-        background-color: #e9ecef;
-        font-weight: bold;
-      }
-      
-      /* Ajustes responsive */
-      @media (max-width: 991.98px) {
-        .indice-lateral {
-          position: static;
-          height: auto;
-          margin-bottom: 30px;
-        }
-      }
-    </style>
   </head>
   <!-- body -->
   <body class="main-layout">
