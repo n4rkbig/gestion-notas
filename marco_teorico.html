@@ -89,7 +89,7 @@
                       >
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="poo.html">POO</a>
+                      <a class="nav-link" href="poo.html">Orientado a Objetos</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="video.html">Video</a>
@@ -110,12 +110,13 @@
       <div class="container">
         <div class="text-bg">
           <h1>
-             
             <span class="blu">Plataforma Educativa de Planificación y Evaluación <br /></span>para la Unidad Educativa Cristiano Vida Nueva
           </h1>
         </div>
       </div>
     </section>
+
+    <hr class="header-separator" style="margin: 0 auto; width: 80%; max-width: 1200px; border: 0; border-top: 1px solid #eee;">
 
     <div class="container my-5">
       <div class="row">
@@ -459,104 +460,107 @@
     <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="js/custom.js"></script>
     <script>
-      // Script para el funcionamiento del acordeón
-      document.addEventListener("DOMContentLoaded", function () {
-        const accordionHeaders = document.querySelectorAll(".accordion-header");
-        const indiceItems = document.querySelectorAll(".indice-item");
+  document.addEventListener("DOMContentLoaded", function () {
+    const accordionSections = document.querySelectorAll(".accordion-section");
+    const accordionHeaders = document.querySelectorAll(".accordion-header");
+    const indiceItems = document.querySelectorAll(".indice-item");
 
-        // Función para abrir/cerrar acordeones
-        function toggleAccordion(header) {
-          const accordionContent = header.nextElementSibling;
+    // Función para abrir/cerrar acordeones
+    function toggleAccordion(header, scrollTo = false) {
+      const accordionContent = header.nextElementSibling;
+      const sectionId = header.parentElement.id;
 
-          // Cerrar otros acordeones si no se mantiene presionada la tecla Ctrl
-          if (!event.ctrlKey) {
-            document.querySelectorAll(".accordion-content.show").forEach((item) => {
-              if (item !== accordionContent) {
-                item.classList.remove("show");
-                item.previousElementSibling.classList.remove("active");
-              }
-            });
-          }
+      // Alternar el acordeón actual
+      header.classList.toggle("active");
+      accordionContent.classList.toggle("show");
 
-          // Alternar el acordeón actual
-          header.classList.toggle("active");
-          accordionContent.classList.toggle("show");
-        }
+      // Actualizar el índice activo
+      updateActiveIndex("#" + sectionId);
 
-        // Función para actualizar el índice activo
-        function updateActiveIndex(targetId) {
-          indiceItems.forEach(item => {
-            item.classList.remove("active");
-            if (item.getAttribute("data-target") === targetId) {
-              item.classList.add("active");
-            }
+      // Scroll suave solo si se solicita explícitamente
+      if (scrollTo) {
+        setTimeout(() => {
+          const section = document.getElementById(sectionId);
+          const sectionTop = section.offsetTop - 20; // Pequeño margen
+          
+          window.scrollTo({
+            top: sectionTop,
+            behavior: 'smooth'
           });
-        }
+        }, 50); // Pequeño retraso para permitir que el acordeón se abra
+      }
+    }
 
-        // Eventos para los headers del acordeón
-        accordionHeaders.forEach((header) => {
-          header.addEventListener("click", function () {
-            toggleAccordion(this);
-            updateActiveIndex("#" + this.parentElement.id);
-          });
-        });
-
-        // Eventos para los items del índice
-        indiceItems.forEach(item => {
-          item.addEventListener("click", function() {
-            const targetId = this.getAttribute("data-target");
-            const targetHeader = document.querySelector(targetId + " .accordion-header");
-            
-            // Actualizar todos los índices
-            indiceItems.forEach(i => i.classList.remove("active"));
-            this.classList.add("active");
-            
-            // Abrir el acordeón correspondiente
-            if (targetHeader) {
-              // Cerrar todos los demás acordeones
-              document.querySelectorAll(".accordion-content.show").forEach(content => {
-                content.classList.remove("show");
-                content.previousElementSibling.classList.remove("active");
-              });
-              
-              // Abrir el acordeón seleccionado
-              targetHeader.classList.add("active");
-              targetHeader.nextElementSibling.classList.add("show");
-              
-              // Scroll suave al elemento
-              document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth'
-              });
-            }
-          });
-        });
-
-        // Intersection Observer para resaltar el índice según el scroll
-        const observerOptions = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const sectionId = "#" + entry.target.id;
-              updateActiveIndex(sectionId);
-            }
-          });
-        }, observerOptions);
-
-        // Observar todas las secciones del acordeón
-        document.querySelectorAll('.accordion-section').forEach(section => {
-          observer.observe(section);
-        });
-
-        // Abrir el primer acordeón por defecto
-        if (accordionHeaders.length > 0) {
-          accordionHeaders[0].click();
+    // Función para actualizar el índice activo
+    function updateActiveIndex(targetId) {
+      indiceItems.forEach(item => {
+        item.classList.remove("active");
+        if (item.getAttribute("data-target") === targetId) {
+          item.classList.add("active");
         }
       });
-    </script>
+    }
+
+    // Eventos para los headers del acordeón (sin scroll automático)
+    accordionHeaders.forEach((header) => {
+      header.addEventListener("click", function (e) {
+        e.preventDefault();
+        toggleAccordion(this, false); // No hacer scroll al hacer click directo
+      });
+    });
+
+    // Eventos para los items del índice (con scroll suave)
+    indiceItems.forEach(item => {
+      item.addEventListener("click", function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("data-target");
+        const targetHeader = document.querySelector(targetId + " .accordion-header");
+        
+        if (targetHeader) {
+          // Si el acordeón está cerrado, abrirlo
+          if (!targetHeader.classList.contains("active")) {
+            toggleAccordion(targetHeader, true); // Hacer scroll después de abrir
+          } else {
+            // Solo hacer scroll si ya está abierto
+            const section = document.querySelector(targetId);
+            const sectionTop = section.offsetTop - 20;
+            
+            window.scrollTo({
+              top: sectionTop,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Intersection Observer para resaltar el índice según el scroll
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = "#" + entry.target.id;
+          updateActiveIndex(sectionId);
+        }
+      });
+    }, observerOptions);
+
+    // Observar todas las secciones del acordeón
+    accordionSections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Abrir el primer acordeón por defecto
+    if (accordionHeaders.length > 0) {
+      accordionHeaders[0].classList.add("active");
+      accordionHeaders[0].nextElementSibling.classList.add("show");
+    }
+  });
+</script>
   </body>
 </html>
