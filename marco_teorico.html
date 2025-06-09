@@ -512,11 +512,17 @@
             // Scroll suave para centrar la sección
             setTimeout(() => {
               const section = document.querySelector(targetId);
-              const sectionTop = section.offsetTop - window.innerHeight / 3;
-              window.scrollTo({
-                top: sectionTop,
-                behavior: "smooth",
-              });
+              if (section) {
+                // Calcular posición considerando el header fijo
+                const headerHeight =
+                  document.querySelector("header").offsetHeight;
+                const sectionTop = section.offsetTop - headerHeight - 20; // 20px de margen
+
+                window.scrollTo({
+                  top: sectionTop,
+                  behavior: "smooth",
+                });
+              }
             }, 50);
           }
 
