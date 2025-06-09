@@ -112,7 +112,7 @@ h4 a,
 h5 a,
 h6 a {
      color: #212121;
-     text-decoration: none!important;
+     text-decoration: none !important;
      opacity: 1
 }
 
@@ -157,7 +157,7 @@ img {
      height: auto;
 }
 
- :focus {
+:focus {
      outline: 0;
 }
 
@@ -839,168 +839,155 @@ ul.location_icon li a {
 }
 
 .logo a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+     display: flex;
+     align-items: center;
+     text-decoration: none;
 }
 
 .logo img {
-    max-width: 70px;
-    height: auto;
-    margin-right: 10px;
+     max-width: 70px;
+     height: auto;
+     margin-right: 10px;
 }
 
 .site-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
+     font-size: 18px;
+     font-weight: bold;
+     color: black;
 }
 
 /* Estilos para las secciones de acordeón */
-      .accordion-section {
-        margin-bottom: 30px;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-      }
-      
-      .accordion-section:hover {
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-      }
-      
-      .accordion-header {
-        background: linear-gradient(135deg, #369d44, #287032);
-        color: white;
-        padding: 20px;
-        cursor: pointer;
-        font-size: 1.2rem;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: background 0.3s ease;
-      }
-      
-      .accordion-header:hover {
-        background: linear-gradient(135deg, #287032, #2c3e50);
-      }
-      
-      .accordion-header::after {
-        content: '+';
-        font-size: 1.5rem;
-        transition: transform 0.3s ease;
-      }
-      
-      .accordion-header.active::after {
-        content: '-';
-      }
-      
-      .accordion-content {
-        padding: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding 0.3s ease;
-        background-color: #f9f9f9;
-      }
-      
-      .accordion-content.show {
-        padding: 30px;
-        max-height: 5000px;
-      }
-      
-      .section-img {
-        border-radius: 6px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-      }
-      
-      .section-title {
-        color: #2c3e50;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-      
-      .section-text {
-        line-height: 1.8;
-        color: #555;
-      }
+.accordion-section {
+     margin-bottom: 30px;
+     border-radius: 8px;
+     overflow: hidden;
+     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+}
 
-      /* Estilos para el índice lateral */
-      .indice-lateral {
-        position: sticky;
-        top: 100px;
-        height: calc(100vh - 120px);
-        overflow-y: auto;
-        padding-right: 15px;
-      }
-      
-      .indice-item {
-        padding: 10px 15px;
-        margin-bottom: 5px;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        color: #333;
-        background-color: #f8f9fa;
-      }
-      
-      .indice-item:hover, .indice-item.active {
-        background-color: #287032;
-        color: white;
-        transform: translateX(5px);
-      }
-      
-      .indice-item.active {
-        font-weight: bold;
-        border-left: 4px solid #287032;
-      }
-      
-      /* Mejoras para el acordeón */
-      .accordion-content {
-        transition: all 0.4s ease;
-        overflow: hidden;
-      }
-      
-      .accordion-header {
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-      
-      .accordion-header:hover {
-        background-color: #f1f1f1;
-      }
-      
-      .accordion-header.active {
-        background-color: #e9ecef;
-        font-weight: bold;
-      }
-      
-      /* Ajustes responsive */
-      @media (max-width: 991.98px) {
-        .indice-lateral {
+.accordion-section:hover {
+     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.accordion-header {
+     background: linear-gradient(135deg, #369d44, #287032);
+     color: white;
+     padding: 20px;
+     cursor: pointer;
+     font-size: 1.2rem;
+     font-weight: 600;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+     background: linear-gradient(135deg, #287032, #2c3e50);
+     color: white;
+}
+
+.accordion-header::after {
+     content: '+';
+     font-size: 1.5rem;
+     transition: transform 0.3s ease;
+}
+
+.accordion-header.active {
+     background: linear-gradient(135deg, #287032, #2c3e50);
+}
+
+.accordion-header.active::after {
+     content: '-';
+}
+
+.accordion-content {
+     padding: 0;
+     max-height: 0;
+     overflow: hidden;
+     transition: all 0.4s ease;
+     background-color: #f9f9f9;
+}
+
+.accordion-content.show {
+     padding: 30px;
+     max-height: 5000px;
+}
+
+.section-img {
+     border-radius: 6px;
+     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+     max-width: 100%;
+     height: auto;
+     margin-bottom: 20px;
+}
+
+.section-title {
+     color: #2c3e50;
+     margin-bottom: 20px;
+     font-weight: 600;
+}
+
+.section-text {
+     line-height: 1.8;
+     color: #555;
+}
+
+/* Estilos para el índice lateral */
+.indice-lateral {
+     position: sticky;
+     top: 100px;
+     height: calc(100vh - 120px);
+     overflow-y: auto;
+     padding-right: 15px;
+}
+
+.indice-item {
+     padding: 10px 15px;
+     margin-bottom: 5px;
+     border-radius: 5px;
+     transition: all 0.3s ease;
+     cursor: pointer;
+     color: #333;
+     background-color: #f8f9fa;
+}
+
+.indice-item:hover,
+.indice-item.active {
+     background-color: #287032;
+     color: white;
+     transform: translateX(5px);
+}
+
+.indice-item.active {
+     font-weight: bold;
+     border-left: 4px solid #287032;
+}
+
+/* Ajustes responsive */
+@media (max-width: 991.98px) {
+     .indice-lateral {
           position: static;
           height: auto;
           margin-bottom: 30px;
-        }
-      }
+     }
+}
 
-      /* ----------------video--------------------- */
+/* ----------------video--------------------- */
 
-      .video-container {
-  position: relative;
-  padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
-  height: 0;
-  overflow: hidden;
-  margin: 20px 0;
+.video-container {
+     position: relative;
+     padding-bottom: 56.25%;
+     /* Relación de aspecto 16:9 */
+     height: 0;
+     overflow: hidden;
+     margin: 20px 0;
 }
 
 .video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
 }
